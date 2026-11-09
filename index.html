@@ -108,6 +108,22 @@ li.done .am{color:var(--mute)}
 .cdet{margin:12px 0 4px;font-size:14px;text-align:center}
 .lg{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
 .lg span{font-size:11px;padding:3px 9px;border-radius:10px}
+.alrt{background:var(--me);color:#fff;padding:10px 16px;font-weight:700;display:flex;justify-content:space-between;gap:10px;align-items:center;font-size:14px}
+.alrt button{background:rgba(255,255,255,.25);border:0;border-radius:10px;padding:6px 12px;color:#fff}
+.pl{display:flex;align-items:center;gap:12px;padding:13px 4px;border-bottom:1px solid var(--line)}
+.pl .ico{font-size:24px;flex:none}
+.pl.past{opacity:.5}
+.cd2{font-size:12px;color:var(--gold);font-weight:700;margin-top:2px}
+.bell{flex:none;border:1px solid var(--line);background:none;border-radius:12px;padding:8px 10px;font-size:13px}
+.sec{font-size:12px;color:var(--mute);margin:18px 0 2px;letter-spacing:.5px}
+.pl{border-left:4px solid transparent;padding-left:10px}
+.pl.w-wife{border-left-color:var(--me)}.pl.w-husb{border-left-color:#4a8fd4}.pl.w-both{border-left-color:var(--gold)}
+.who{display:inline-block;font-size:11px;font-weight:700;border-radius:10px;padding:2px 8px;margin-top:4px;color:#fff}
+.who.wife{background:var(--me)}.who.husb{background:#4a8fd4}.who.both{background:var(--gold);color:var(--ongold)}
+.flt{display:flex;gap:6px;margin-bottom:8px}
+.flt button{flex:1;border:1px solid var(--line);background:var(--surface);border-radius:14px;padding:7px;font-size:13px}
+.flt button.on{background:var(--gold);color:var(--ongold);border-color:var(--gold);font-weight:700}
+dialog select{width:100%;font:inherit;font-size:16px;padding:11px 12px;border-radius:10px;border:1px solid var(--line);background:var(--bg);color:var(--ink)}
 dialog{border:1px solid var(--line);border-radius:20px;background:var(--surface);color:var(--ink);width:min(92vw,400px);padding:20px}
 dialog::backdrop{background:rgba(0,0,0,.6)}
 dialog h2{margin:0 0 14px;font-size:18px}
@@ -140,6 +156,7 @@ button:focus-visible,textarea:focus-visible,input:focus-visible{outline:2px soli
 
 <div id="app" class="hide">
 <header><h1 id="ttl">Komitmen</h1><button id="out">Keluar</button></header>
+<div id="alrt" class="alrt hide"></div>
 <div id="stage">
  <section class="view on" id="v-bill">
   <div class="mnav"><button class="ic" id="prev" aria-label="Bulan lepas">‹</button><b id="mlabel"></b><button class="ic" id="next" aria-label="Bulan depan">›</button></div>
@@ -175,6 +192,12 @@ button:focus-visible,textarea:focus-visible,input:focus-visible{outline:2px soli
    <div class="chist" id="chist"></div>
   </div>
  </section>
+ <section class="view" id="v-plan">
+  <div class="flt" id="flt"><button data-f="all" class="on">Semua</button><button data-f="wife">Isteri</button><button data-f="husb">Suami</button></div>
+  <div class="acts2"><button id="notif" class="hide">Hidupkan notifikasi</button></div>
+  <div id="plist"></div>
+  <div class="note">Bunyi amaran dalam app hanya berbunyi bila app dibuka. Untuk amaran 2 jam sebelum janji walaupun app ditutup, tekan Kalendar pada setiap janji dan simpan ke kalendar telefon.</div>
+ </section>
  <button class="fab" id="add">+ Tambah</button>
 </div>
 <nav>
@@ -182,9 +205,20 @@ button:focus-visible,textarea:focus-visible,input:focus-visible{outline:2px soli
  <button id="n-bill2"><i>🧾</i><u id="l2">Suami</u></button>
  <button id="n-chat"><i>💬</i>Chat<span class="dot" id="dot"></span></button>
  <button id="n-cyc"><i>🌸</i>Haid</button>
+ <button id="n-plan"><i>📅</i>Janji</button>
 </nav>
 </div>
 
+<dialog id="dlg3">
+ <h2 id="d3t">Janji baru</h2>
+ <label for="pt">Tajuk</label><input id="pt" placeholder="cth: Appointment klinik" autocomplete="off">
+ <label for="pk">Jenis</label><select id="pk"><option value="janji">Appointment</option><option value="penting">Tarikh penting</option></select>
+ <label for="pw">Untuk siapa</label><select id="pw"><option value="wife">Isteri</option><option value="husb">Suami</option><option value="both">Kami berdua</option></select>
+ <label for="pd">Tarikh</label><input id="pd" type="date">
+ <label for="ptm">Masa (pilihan, untuk amaran 2 jam sebelum)</label><input id="ptm" type="time">
+ <label for="pn">Nota (pilihan)</label><input id="pn" placeholder="cth: bawa kad IC" autocomplete="off">
+ <div class="acts"><button class="del" id="pdel">Padam</button><button id="pcancel">Batal</button><button class="pri" id="psave">Simpan</button></div>
+</dialog>
 <dialog id="dlg2">
  <h2 id="d2t"></h2>
  <div id="g1"><label for="gs">Gaji bulanan (RM)</label><input id="gs" type="number" inputmode="decimal" step="0.01"></div>
@@ -274,7 +308,7 @@ function openDlg(id){
   $("fn").value=it?it.name:"";$("fa").value=it?amtOf(it,mk()):"";$("fd").value=it&&it.due?it.due:"";$("fv").checked=!!(it&&it.var);
   $("fdel").style.display=it?"":"none";$("dlg").showModal();
 }
-$("add").onclick=function(){openDlg(null)};
+$("add").onclick=function(){if(TAB==="plan")openPlan(null);else openDlg(null)};
 $("fcancel").onclick=function(){$("dlg").close()};
 $("fsave").onclick=function(){
   const nm=$("fn").value.trim(),am=parseFloat($("fa").value);let du=parseInt($("fd").value,10)||0;
@@ -377,13 +411,98 @@ function send(t){t=(t||"").trim();if(!t)return;$("cerr").textContent="";
 $("send").onclick=function(){const i=$("ci");send(i.value);i.value="";i.style.height=""};
 $("ci").oninput=function(){this.style.height="auto";this.style.height=Math.min(this.scrollHeight,110)+"px"};
 
+/* ---------- janji ---------- */
+let PL=[],pEdit=null,AC=null,PF="all";
+const DAYS=["Ahd","Isn","Sel","Rab","Kha","Jum","Sab"];
+function ptime(it){return new Date(it.date+"T"+(it.time||"00:00")+":00")}
+function savePL(){setDoc(doc(db,"plans","main"),{items:PL}).catch(fail)}
+function pfmt(it){const d=pd2(it.date);return DAYS[d.getDay()]+" "+fd(d)+(it.time?", "+it.time:"")}
+function isPast(it){const n=new Date(),t=new Date(n.getFullYear(),n.getMonth(),n.getDate());return it.time?ptime(it)<n:pd2(it.date)<t}
+function pcount(it){
+  const n=new Date(),ms=ptime(it)-n;
+  if(it.time&&ms>0&&ms<864e5){const h=Math.floor(ms/36e5),m=Math.round((ms%36e5)/6e4);return h?h+" jam "+m+" min lagi":m+" min lagi"}
+  const t=new Date(n.getFullYear(),n.getMonth(),n.getDate()),dl=dd(pd2(it.date),t);
+  return dl===0?"Hari ini":dl===1?"Esok":dl>1?dl+" hari lagi":"Sudah lepas";
+}
+function prow(it,old){
+  const d=document.createElement("div");d.className="pl"+(old?" past":"")+" w-"+(it.who||"both");
+  const ic=document.createElement("div");ic.className="ico";ic.textContent=it.type==="penting"?"⭐":"🩺";
+  const nm=document.createElement("div");nm.className="nm";
+  const a=document.createElement("div");a.textContent=it.title;nm.appendChild(a);
+  const b=document.createElement("div");b.className="dd";b.textContent=pfmt(it)+(it.note?", "+it.note:"");nm.appendChild(b);
+  const w=it.who||"both",wb=document.createElement("span");wb.className="who "+w;wb.textContent=(w==="both"?"Berdua":w==="wife"?"Isteri":"Suami")+(w===ROLE?" (saya)":"");nm.appendChild(wb);
+  if(!old){const c=document.createElement("div");c.className="cd2";c.textContent=pcount(it);nm.appendChild(c)}
+  nm.onclick=function(){openPlan(it.id)};
+  d.appendChild(ic);d.appendChild(nm);
+  if(!old){const bl=document.createElement("button");bl.className="bell";bl.textContent="🔔 Kalendar";bl.setAttribute("aria-label","Simpan ke kalendar: "+it.title);bl.onclick=function(){icsDown(it)};d.appendChild(bl)}
+  return d;
+}
+function renderPlan(){
+  const el=$("plist");el.innerHTML="";
+  const all=PL.filter(function(i){const w=i.who||"both";return PF==="all"||w===PF||w==="both"}).sort(function(a,b){return ptime(a)-ptime(b)});
+  const up=all.filter(function(i){return !isPast(i)}),old=all.filter(isPast).reverse().slice(0,5);
+  if(!up.length)el.innerHTML='<div class="empty">Belum ada janji atau tarikh penting. Tekan + Tambah.</div>';
+  up.forEach(function(it){el.appendChild(prow(it,false))});
+  if(old.length){const h=document.createElement("div");h.className="sec";h.textContent="Sudah lepas";el.appendChild(h);old.forEach(function(it){el.appendChild(prow(it,true))})}
+  $("notif").classList.toggle("hide",!("Notification" in window)||Notification.permission!=="default");
+}
+function openPlan(id){
+  pEdit=id;const it=PL.filter(function(x){return x.id===id})[0];
+  $("d3t").textContent=it?"Ubah janji":"Janji baru";$("pt").value=it?it.title:"";$("pk").value=it?it.type:"janji";
+  $("pd").value=it?it.date:ds(new Date());$("pw").value=it?(it.who||"both"):ROLE;$("ptm").value=it?it.time:"";$("pn").value=it?it.note:"";
+  $("pdel").style.display=it?"":"none";$("dlg3").showModal();
+}
+$("pcancel").onclick=function(){$("dlg3").close()};
+document.querySelectorAll("#flt button").forEach(function(b){b.onclick=function(){PF=b.dataset.f;document.querySelectorAll("#flt button").forEach(function(x){x.className=x===b?"on":""});renderPlan()}});
+$("psave").onclick=function(){
+  const t=$("pt").value.trim(),d=$("pd").value;if(!t||!d){$("pt").focus();return}
+  const o={title:t,who:$("pw").value,type:$("pk").value,date:d,time:$("ptm").value||"",note:$("pn").value.trim()};
+  if(pEdit)PL=PL.map(function(x){return x.id===pEdit?Object.assign({id:x.id},o):x});
+  else PL.push(Object.assign({id:"p"+Date.now()},o));
+  savePL();$("dlg3").close();renderPlan();checkAlerts();
+};
+$("pdel").onclick=function(){if(!two(this))return;PL=PL.filter(function(x){return x.id!==pEdit});savePL();$("dlg3").close();renderPlan()};
+function icsEsc(s){return String(s||"").replace(/[\\;,]/g,"\\$&").replace(/\n/g,"\\n")}
+function icsDown(it){
+  const z=function(d){return d.getFullYear()+pad(d.getMonth()+1)+pad(d.getDate())+"T"+pad(d.getHours())+pad(d.getMinutes())+"00"};
+  const L=["BEGIN:VCALENDAR","VERSION:2.0","PRODID:-//Kita//MS","CALSCALE:GREGORIAN","BEGIN:VEVENT","UID:"+it.id+"@kita","DTSTAMP:"+new Date().toISOString().replace(/[-:]/g,"").split(".")[0]+"Z"];
+  if(it.time){const s0=ptime(it);L.push("DTSTART:"+z(s0),"DTEND:"+z(new Date(s0.getTime()+36e5)))}
+  else{const s0=pd2(it.date);L.push("DTSTART;VALUE=DATE:"+z(s0).slice(0,8),"DTEND;VALUE=DATE:"+z(addD(s0,1)).slice(0,8))}
+  L.push("SUMMARY:"+icsEsc(it.title));if(it.note)L.push("DESCRIPTION:"+icsEsc(it.note));
+  L.push("BEGIN:VALARM","ACTION:DISPLAY","DESCRIPTION:"+icsEsc(it.title),it.time?"TRIGGER:-PT2H":"TRIGGER:PT9H","END:VALARM","END:VEVENT","END:VCALENDAR");
+  const blob=new Blob([L.join("\r\n")],{type:"text/calendar"}),a=document.createElement("a");
+  a.href=URL.createObjectURL(blob);a.download="janji.ics";document.body.appendChild(a);a.click();a.remove();
+  setTimeout(function(){URL.revokeObjectURL(a.href)},5000);
+}
+function unlockAudio(){try{if(!AC)AC=new (window.AudioContext||window.webkitAudioContext)();if(AC.state==="suspended")AC.resume()}catch(e){}}
+document.addEventListener("pointerdown",unlockAudio);
+function beep(){
+  try{if(AC){for(let i=0;i<4;i++){const o=AC.createOscillator(),g=AC.createGain();o.frequency.value=i%2?660:880;o.connect(g);g.connect(AC.destination);
+    const t=AC.currentTime+i*0.45;g.gain.setValueAtTime(0.0001,t);g.gain.exponentialRampToValueAtTime(0.4,t+0.03);g.gain.exponentialRampToValueAtTime(0.0001,t+0.4);o.start(t);o.stop(t+0.42)}}}catch(e){}
+  try{if(navigator.vibrate)navigator.vibrate([300,150,300])}catch(e){}
+}
+function checkAlerts(){
+  const al=lsGet("kk-al")||{},n=new Date();let hit=null;
+  PL.forEach(function(it){if(!it.time||(it.who&&it.who!=="both"&&it.who!==ROLE))return;const t=ptime(it),key=it.id+it.date+it.time;if(n>=t-72e5&&n<t&&!al[key]){al[key]=1;hit=hit||it}});
+  if(hit){lsSet("kk-al",al);
+    const mins=Math.max(1,Math.round((ptime(hit)-n)/6e4)),h=Math.floor(mins/60),m=mins%60;
+    const msg="⏰ "+hit.title+" pada "+hit.time+", lagi "+(h?h+" jam ":"")+(m?m+" min":"");
+    const box=$("alrt");box.innerHTML="";const sp=document.createElement("span");sp.textContent=msg;
+    const bt=document.createElement("button");bt.textContent="Tutup";bt.onclick=function(){box.classList.add("hide")};
+    box.appendChild(sp);box.appendChild(bt);box.classList.remove("hide");
+    beep();try{if("Notification" in window&&Notification.permission==="granted")new Notification("Janji sebentar lagi",{body:msg})}catch(e){}}
+  if(TAB==="plan")renderPlan();
+}
+$("notif").onclick=function(){try{Notification.requestPermission().then(renderPlan)}catch(e){}};
+document.addEventListener("visibilitychange",function(){if(!document.hidden)checkAlerts()});
+
 /* ---------- tab ---------- */
 function setLabels(){$("l1").textContent=ROLE==="wife"?"Saya":"Saya";$("l2").textContent=ROLE==="wife"?"Suami":"Isteri"}
-function TT(t){return {bill:"Komitmen Saya",bill2:ROLE==="wife"?"Komitmen Suami":"Komitmen Isteri",chat:"Chat Kita",cyc:"Kitaran Haid"}[t]}
+function TT(t){return {bill:"Komitmen Saya",bill2:ROLE==="wife"?"Komitmen Suami":"Komitmen Isteri",chat:"Chat Kita",cyc:"Kitaran Haid",plan:"Janji & Tarikh Penting"}[t]}
 function show(t){TAB=t;const v=t==="bill2"?"bill":t;if(v==="bill"){K=t;S=SS[t]}
-  ["bill","chat","cyc"].forEach(function(n){$("v-"+n).className="view"+(n===v?" on":"")});["bill","bill2","chat","cyc"].forEach(function(n){$("n-"+n).className=n===t?"on":""});
-  $("ttl").textContent=TT(t);$("add").style.display=v==="bill"?"block":"none";if(t==="chat")renderChat();if(v==="bill")render();if(t==="cyc")renderCyc()}
-["bill","bill2","chat","cyc"].forEach(function(n){$("n-"+n).onclick=function(){show(n)}});
+  ["bill","chat","cyc","plan"].forEach(function(n){$("v-"+n).className="view"+(n===v?" on":"")});["bill","bill2","chat","cyc","plan"].forEach(function(n){$("n-"+n).className=n===t?"on":""});
+  $("ttl").textContent=TT(t);$("add").style.display=(v==="bill"||v==="plan")?"block":"none";if(t==="chat")renderChat();if(v==="bill")render();if(t==="cyc")renderCyc();if(t==="plan")renderPlan()}
+["bill","bill2","chat","cyc","plan"].forEach(function(n){$("n-"+n).onclick=function(){show(n)}});
 
 /* ---------- auth dan mula ---------- */
 function gate(which){["login","role","app"].forEach(function(n){$(n).classList.toggle("hide",n!==which)})}
@@ -420,6 +539,8 @@ function boot(){
     else{C=fixC(ROLE==="wife"?seedC():null);if(ROLE==="wife"&&!cs){cs=true;saveC()}}
     renderCyc();
   },fail);
+  onSnapshot(doc(db,"plans","main"),function(s){PL=s.exists()?(s.data().items||[]):[];renderPlan();checkAlerts()},fail);
+  setInterval(checkAlerts,30000);
   onSnapshot(query(collection(db,"chat"),orderBy("ts","desc"),limit(100)),function(q){
     MSGS=q.docs.map(function(d){return d.data()}).filter(function(m){return m&&m.t}).reverse();renderChat();
   },fail);
