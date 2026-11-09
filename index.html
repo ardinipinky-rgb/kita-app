@@ -166,6 +166,51 @@ dialog input{width:100%;font:inherit;font-size:16px;padding:11px 12px;border-rad
 .acts .pri{background:var(--me);color:#fff;border-color:transparent}
 .acts .del{color:var(--red);flex:none}
 button:focus-visible,textarea:focus-visible,input:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+
+html{background:none}
+body::before,body::after{content:"";position:fixed;z-index:-1;border-radius:50%;filter:blur(70px);pointer-events:none}
+body::before{width:320px;height:320px;left:-90px;top:18%;background:rgba(180,92,240,.34);animation:fl 15s ease-in-out infinite alternate}
+body::after{width:300px;height:300px;right:-90px;bottom:8%;background:rgba(255,111,159,.30);animation:fl 19s ease-in-out infinite alternate-reverse}
+@keyframes fl{to{transform:translate(40px,-60px) scale(1.15)}}
+@keyframes fi{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){body::before,body::after,.view.on{animation:none}}
+.view.on{animation:fi .28s ease}
+button:active{transform:scale(.97)}
+.card,.tile,#emo,#pvb,.ban,.seg{background:linear-gradient(145deg,rgba(255,255,255,.16),rgba(255,255,255,.04));border:1px solid rgba(255,255,255,.2);box-shadow:inset 0 1px 0 rgba(255,255,255,.28),0 14px 34px rgba(0,0,0,.3);backdrop-filter:blur(24px) saturate(170%);-webkit-backdrop-filter:blur(24px) saturate(170%)}
+nav{background:linear-gradient(145deg,rgba(255,255,255,.16),rgba(255,255,255,.05));border:1px solid rgba(255,255,255,.22);box-shadow:inset 0 1px 0 rgba(255,255,255,.3),0 10px 30px rgba(0,0,0,.35);backdrop-filter:blur(26px) saturate(180%);-webkit-backdrop-filter:blur(26px) saturate(180%)}
+nav button{font-size:10px}nav button i{font-size:19px}
+nav button.on{background:linear-gradient(145deg,rgba(255,255,255,.28),rgba(255,255,255,.08));box-shadow:inset 0 1px 0 rgba(255,255,255,.35)}
+dialog{background:linear-gradient(145deg,rgba(60,36,72,.82),rgba(28,16,36,.9));border:1px solid rgba(255,255,255,.2);box-shadow:inset 0 1px 0 rgba(255,255,255,.25),0 24px 60px rgba(0,0,0,.5);backdrop-filter:blur(28px);-webkit-backdrop-filter:blur(28px)}
+dialog::backdrop{background:rgba(10,4,14,.6);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+dialog textarea{width:100%;min-height:150px;font:inherit;font-size:13px;padding:11px 12px;border-radius:12px;border:1px solid var(--line);background:var(--field);color:var(--ink)}
+.hero{background:linear-gradient(135deg,rgba(255,111,159,.55),rgba(180,92,240,.5));border:1px solid rgba(255,255,255,.28);box-shadow:inset 0 1px 0 rgba(255,255,255,.4),0 18px 44px rgba(180,92,240,.35)}
+.hero::before{content:"";position:absolute;inset:0;background:linear-gradient(120deg,rgba(255,255,255,.28),transparent 42%);pointer-events:none}
+.hero .hn{text-shadow:0 4px 24px rgba(255,255,255,.35)}
+.lbl{text-transform:uppercase;letter-spacing:1.3px;font-size:11px}
+.ic,.chip,.mini,.qk button,#picm button,.flt button,.tabs button,.bell,.acts2 button,.tile{backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.b.ot{background:linear-gradient(145deg,rgba(255,255,255,.17),rgba(255,255,255,.07));border:1px solid rgba(255,255,255,.14)}
+.b.me{box-shadow:0 6px 18px rgba(255,111,159,.3)}
+.cmp textarea{background:linear-gradient(145deg,rgba(255,255,255,.14),rgba(255,255,255,.05));border-color:rgba(255,255,255,.2);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+.dr{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--line);cursor:pointer}
+.dr:last-of-type{border-bottom:0}
+.dr .ico{font-size:22px;flex:none}
+.kc{margin-bottom:12px}
+.kh{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+.av{width:46px;height:46px;border-radius:50%;background:var(--me);color:#fff;display:grid;place-items:center;font-family:Georgia,serif;font-style:italic;font-size:22px;font-weight:700;flex:none;box-shadow:0 6px 16px rgba(255,111,159,.35)}
+.kn{font-family:Georgia,serif;font-style:italic;font-size:22px}
+.kr{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:9px 0;border-top:1px solid var(--line)}
+.kv{font-size:15px;font-weight:600;letter-spacing:.4px;overflow-wrap:anywhere}
+.cp{flex:none;border:1px solid var(--line);background:none;border-radius:10px;padding:5px 10px;font-size:12px}
+.kc>.mini{margin-top:10px;width:100%}
+@media (prefers-color-scheme:light){
+.card,.tile,#emo,#pvb,.ban,.seg{background:linear-gradient(145deg,rgba(255,255,255,.92),rgba(255,255,255,.58));border:1px solid rgba(255,255,255,.95);box-shadow:inset 0 1px 0 #fff,0 12px 30px rgba(224,69,123,.14)}
+nav{background:linear-gradient(145deg,rgba(255,255,255,.95),rgba(255,255,255,.6));border-color:#fff;box-shadow:inset 0 1px 0 #fff,0 10px 28px rgba(224,69,123,.18)}
+nav button.on{background:linear-gradient(145deg,#fff,rgba(255,255,255,.6))}
+dialog{background:linear-gradient(145deg,rgba(255,255,255,.96),rgba(255,240,245,.9));border-color:#fff;box-shadow:0 24px 60px rgba(224,69,123,.25)}
+dialog::backdrop{background:rgba(90,30,60,.35)}
+.b.ot{background:linear-gradient(145deg,#fff,#f6e6ec);border-color:rgba(255,255,255,.9)}
+.cmp textarea{background:rgba(255,255,255,.85)}
+}
 </style>
 </head>
 <body>
@@ -190,7 +235,9 @@ button:focus-visible,textarea:focus-visible,input:focus-visible{outline:2px soli
 <div id="stage">
  <section class="view on" id="v-home">
   <div class="hero" id="hero"><div class="hh" id="hello"></div><div class="hn" id="hdays">💞</div><div class="hs" id="hsince"></div></div>
+  <div class="card" style="margin-top:12px"><div class="lbl">Tarikh penting</div><div id="dlist"></div><div class="acts2"><button id="dall">Lihat semua</button><button id="dadd">+ Tarikh</button></div></div>
   <div class="tiles" id="tiles"></div>
+  <div class="foot"><button id="imp">Import data keluarga</button></div>
  </section>
  <section class="view" id="v-bill">
   <div class="seg" id="seg"><button id="l1" class="on">Saya</button><button id="l2">Suami</button></div>
@@ -236,6 +283,10 @@ button:focus-visible,textarea:focus-visible,input:focus-visible{outline:2px soli
   <div id="plist"></div>
   <div class="note">Bunyi amaran dalam app hanya berbunyi bila app dibuka. Untuk amaran 2 jam sebelum janji walaupun app ditutup, tekan Kalendar pada setiap janji dan simpan ke kalendar telefon.</div>
  </section>
+ <section class="view" id="v-kids">
+  <div id="klist"></div>
+  <div class="note">Nombor dilindungi dan hanya tunjuk selama 20 saat bila ditekan. Data hanya boleh dibaca oleh akaun awak berdua.</div>
+ </section>
  <button class="fab" id="add">+ Tambah</button>
 </div>
 <nav>
@@ -244,13 +295,38 @@ button:focus-visible,textarea:focus-visible,input:focus-visible{outline:2px soli
  <button id="n-chat"><i>💬</i>Chat<span class="dot" id="dot"></span></button>
  <button id="n-cyc"><i>🌸</i>Haid</button>
  <button id="n-plan"><i>📅</i>Janji</button>
+ <button id="n-kids"><i>👶</i>Anak</button>
 </nav>
 </div>
 
+<dialog id="dlg5">
+ <h2 id="k5t">Anak baru</h2>
+ <label for="kn">Nama panggilan</label><input id="kn" autocomplete="off">
+ <label for="kf">Nama penuh</label><input id="kf" autocomplete="off" autocapitalize="characters">
+ <label for="ki">No. MyKid</label><input id="ki" inputmode="numeric" autocomplete="off" placeholder="cth: 130815-05-0021">
+ <label for="kr">No. daftar kelahiran</label><input id="kr" autocomplete="off" autocapitalize="characters">
+ <label for="kd">Tarikh lahir</label><input id="kd" type="date">
+ <label for="kp">Tempat lahir (pilihan)</label><input id="kp" autocomplete="off">
+ <div class="acts"><button class="del" id="kdel">Padam</button><button id="kcancel">Batal</button><button class="pri" id="ksave">Simpan</button></div>
+</dialog>
+<dialog id="dlg6">
+ <h2 id="d6t">Tarikh baru</h2>
+ <label for="dl">Nama</label><input id="dl" autocomplete="off" placeholder="cth: Birthday abang">
+ <label for="dk">Jenis</label><select id="dk"><option value="bday">Hari lahir</option><option value="ann">Ulang tahun</option><option value="love">Tarikh bercinta</option></select>
+ <label for="dd2">Tarikh</label><input id="dd2" type="date">
+ <div class="acts"><button class="del" id="ddel">Padam</button><button id="dcancel">Batal</button><button class="pri" id="dsave">Simpan</button></div>
+</dialog>
+<dialog id="dlg7">
+ <h2>Import data keluarga</h2>
+ <label for="imt">Tampal teks import di sini</label><textarea id="imt"></textarea>
+ <div class="note" id="ierr" style="color:var(--red)"></div>
+ <div class="acts"><button id="icx">Batal</button><button class="pri" id="iok">Import</button></div>
+</dialog>
 <div class="vw hide" id="vw"><img id="vimg" alt=""><div class="vn">Gambar ini hanya dalam app, tidak disimpan ke galeri. Tekan di mana-mana untuk tutup.</div><button id="vdel" class="hide">Padam gambar</button></div>
 <dialog id="dlg4">
  <h2>Mula bersama</h2>
- <label for="ms">Tarikh nikah atau mula bersama</label><input id="ms" type="date">
+ <label for="ms">Tarikh mula bercinta</label><input id="ms" type="date">
+ <label for="mm">Tarikh perkahwinan</label><input id="mm" type="date">
  <div class="acts"><button id="mx">Batal</button><button class="pri" id="mok">Simpan</button></div>
 </dialog>
 <dialog id="dlg3">
@@ -352,7 +428,7 @@ function openDlg(id){
   $("fn").value=it?it.name:"";$("fa").value=it?amtOf(it,mk()):"";$("fd").value=it&&it.due?it.due:"";$("fv").checked=!!(it&&it.var);
   $("fdel").style.display=it?"":"none";$("dlg").showModal();
 }
-$("add").onclick=function(){if(TAB==="plan")openPlan(null);else openDlg(null)};
+$("add").onclick=function(){if(TAB==="plan")openPlan(null);else if(TAB==="kids")openKid(null);else openDlg(null)};
 $("fcancel").onclick=function(){$("dlg").close()};
 $("fsave").onclick=function(){
   const nm=$("fn").value.trim(),am=parseFloat($("fa").value);let du=parseInt($("fd").value,10)||0;
@@ -578,7 +654,7 @@ $("pvs").onclick=function(){if(!PEND)return;const d=PEND,o=$("pvo").checked;PEND
   addDoc(collection(db,"chat"),{u:UID,t:"",img:d,once:o,seen:false,ts:Date.now()}).catch(function(){$("cerr").textContent="Gambar tak dapat dihantar."})};
 
 /* ---------- laman utama ---------- */
-let META={since:""};
+let META={since:"",married:"",dates:[]};
 function tile(ic,t,sub,go,wide){const b=document.createElement("button");b.className="tile"+(wide?" wide":"");
   const i=document.createElement("div");i.className="ti";i.textContent=ic;const bb=document.createElement("b");bb.textContent=t;const sp=document.createElement("span");sp.textContent=sub;
   b.appendChild(i);b.appendChild(bb);b.appendChild(sp);b.onclick=function(){show(go)};return b}
@@ -587,8 +663,9 @@ function remain(st){if(!st)return null;const k=now.getFullYear()+"-"+(now.getMon
 function renderHome(){
   const n=new Date(),h=n.getHours(),today=new Date(n.getFullYear(),n.getMonth(),n.getDate());
   $("hello").textContent=(h<11?"Selamat pagi":h<15?"Selamat tengah hari":h<19?"Selamat petang":"Selamat malam")+", sayang 💕";
-  if(META.since){const sd=pd2(META.since);$("hdays").textContent=dd(today,sd).toLocaleString("en-US");$("hsince").textContent="hari bersama sejak "+fd(sd)+" "+sd.getFullYear()}
-  else{$("hdays").textContent="💞";$("hsince").textContent="Tekan di sini untuk set tarikh mula bersama"}
+  if(META.since){const sd=pd2(META.since);$("hdays").textContent=dd(today,sd).toLocaleString("en-US");$("hsince").textContent="hari bersama sejak "+fd(sd)+" "+sd.getFullYear()+(META.married?", berkahwin "+span(pd2(META.married),today):"")}
+  else{$("hdays").textContent="💞";$("hsince").textContent="Tekan di sini untuk set tarikh bercinta dan nikah"}
+  renderDates(today);
   const g=$("tiles");g.innerHTML="";
   const lm=MSGS.length?MSGS[MSGS.length-1]:null;
   g.appendChild(tile("💬","Chat",lm?(lm.t||"📷 Gambar").slice(0,50):"Mulakan sembang","chat",true));
@@ -599,20 +676,104 @@ function renderHome(){
   const r1=remain(SS.bill),r2=remain(SS.bill2);
   g.appendChild(tile("💰","Duit saya",r1===null?"...":"Baki "+rm(r1),"bill"));
   g.appendChild(tile("🧾",ROLE==="wife"?"Duit suami":"Duit isteri",r2===null?"...":"Baki "+rm(r2),"bill2"));
+  g.appendChild(tile("👶","Anak-anak",KIDS.length?KIDS.length+" orang":"Belum ada maklumat","kids",true));
 }
-$("hero").onclick=function(){$("ms").value=META.since||"";$("dlg4").showModal()};
+$("hero").onclick=function(){$("ms").value=META.since||"";$("mm").value=META.married||"";$("dlg4").showModal()};
 $("mx").onclick=function(){$("dlg4").close()};
-$("mok").onclick=function(){const v=$("ms").value;if(!v)return;META.since=v;setDoc(doc(db,"meta","main"),{since:v}).catch(fail);$("dlg4").close();renderHome()};
+$("mok").onclick=function(){META.since=$("ms").value||META.since;META.married=$("mm").value||META.married;saveMeta();$("dlg4").close();renderHome()};
 
 /* ---------- tab ---------- */
+/* ---------- tarikh penting dan anak ---------- */
+let KIDS=[],REV={},DALL=false,dEdit=null,kEdit=null;
+const KI={bday:"🎂",ann:"💍",love:"💞"};
+function saveMeta(){setDoc(doc(db,"meta","main"),META).catch(fail)}
+function saveKids(){setDoc(doc(db,"family","kids"),{items:KIDS}).catch(fail)}
+function lfmt(x){const d=pd2(x);return d.getDate()+" "+MN[d.getMonth()]+" "+d.getFullYear()}
+function span(a,b){let y=b.getFullYear()-a.getFullYear(),m=b.getMonth()-a.getMonth();if(b.getDate()<a.getDate())m--;if(m<0){y--;m+=12}return y+" tahun"+(m?" "+m+" bulan":"")}
+function age(x){const a=pd2(x),t=new Date();let y=t.getFullYear()-a.getFullYear(),m=t.getMonth()-a.getMonth();if(t.getDate()<a.getDate())m--;if(m<0){y--;m+=12}return y>0?y+" tahun"+(m?" "+m+" bulan":""):m+" bulan"}
+function nextOcc(x,today){const a=pd2(x);let o=new Date(today.getFullYear(),a.getMonth(),a.getDate());if(o<today)o=new Date(today.getFullYear()+1,a.getMonth(),a.getDate());return o}
+function renderDates(today){
+  const el=$("dlist");el.innerHTML="";
+  const L=(META.dates||[]).map(function(x){const o=nextOcc(x.date,today);return {x:x,n:o.getFullYear()-pd2(x.date).getFullYear(),dl:dd(o,today)}}).sort(function(a,b){return a.dl-b.dl});
+  if(!L.length)el.innerHTML='<div class="empty">Belum ada tarikh penting.</div>';
+  (DALL?L:L.slice(0,5)).forEach(function(r){
+    const d=document.createElement("div");d.className="dr";
+    const ic=document.createElement("div");ic.className="ico";ic.textContent=KI[r.x.kind]||"⭐";
+    const nm=document.createElement("div");nm.className="nm";
+    const a=document.createElement("div");a.textContent=r.x.label;
+    const b=document.createElement("div");b.className="dd";b.textContent=lfmt(r.x.date)+", "+(r.x.kind==="bday"?"akan "+r.n+" tahun":r.x.kind==="ann"?"tahun ke-"+r.n:r.n+" tahun bercinta");
+    nm.appendChild(a);nm.appendChild(b);
+    const c=document.createElement("div");c.className="cd2";c.textContent=r.dl===0?"Hari ini 🎉":r.dl===1?"Esok":r.dl+" hari lagi";
+    d.appendChild(ic);d.appendChild(nm);d.appendChild(c);d.onclick=function(){openDate(r.x.id)};el.appendChild(d)});
+  $("dall").textContent=DALL?"Tunjuk sedikit":"Lihat semua";$("dall").style.display=L.length>5?"":"none";
+}
+function openDate(id){dEdit=id;const x=(META.dates||[]).filter(function(i){return i.id===id})[0];
+  $("d6t").textContent=x?"Ubah tarikh":"Tarikh baru";$("dl").value=x?x.label:"";$("dd2").value=x?x.date:"";$("dk").value=x?x.kind:"bday";$("ddel").style.display=x?"":"none";$("dlg6").showModal()}
+$("dadd").onclick=function(){openDate(null)};
+$("dall").onclick=function(){DALL=!DALL;renderHome()};
+$("dcancel").onclick=function(){$("dlg6").close()};
+$("dsave").onclick=function(){const l=$("dl").value.trim(),d=$("dd2").value;if(!l||!d){$("dl").focus();return}
+  META.dates=META.dates||[];const o={label:l,date:d,kind:$("dk").value};
+  if(dEdit)META.dates=META.dates.map(function(x){return x.id===dEdit?Object.assign({id:x.id},o):x});else META.dates.push(Object.assign({id:"d"+Date.now()},o));
+  saveMeta();$("dlg6").close();renderHome()};
+$("ddel").onclick=function(){if(!two(this))return;META.dates=META.dates.filter(function(x){return x.id!==dEdit});saveMeta();$("dlg6").close();renderHome()};
+
+function mask(v){return String(v||"").replace(/[0-9A-Za-z]/g,"•")}
+function copy(t,b){try{navigator.clipboard.writeText(t).then(function(){b.textContent="Disalin ✓";setTimeout(function(){b.textContent="Salin"},1500)})}catch(e){}}
+function krow(lbl,val,vis,cp){
+  const r=document.createElement("div");r.className="kr";
+  const left=document.createElement("div");const l=document.createElement("div");l.className="dd";l.textContent=lbl;
+  const v=document.createElement("div");v.className="kv";v.textContent=vis?(val||"-"):mask(val)||"-";
+  left.appendChild(l);left.appendChild(v);r.appendChild(left);
+  if(cp&&vis&&val){const bx=document.createElement("button");bx.className="cp";bx.textContent="Salin";bx.onclick=function(){copy(val,bx)};r.appendChild(bx)}
+  return r;
+}
+function renderKids(){
+  const el=$("klist");el.innerHTML="";
+  if(!KIDS.length){el.innerHTML='<div class="empty">Belum ada maklumat anak. Tekan + Tambah, atau guna Import di tab Kita.</div>';return}
+  KIDS.forEach(function(k){
+    const open=(REV[k.id]||0)>Date.now(),c=document.createElement("div");c.className="card kc";
+    const h=document.createElement("div");h.className="kh";
+    const av=document.createElement("div");av.className="av";av.textContent=(k.nick||k.name||"?").charAt(0).toUpperCase();
+    const t=document.createElement("div");t.className="nm";
+    const a=document.createElement("div");a.className="kn";a.textContent=k.nick||k.name;
+    const b=document.createElement("div");b.className="dd";b.textContent=k.dob?age(k.dob)+", "+lfmt(k.dob):"";
+    t.appendChild(a);t.appendChild(b);h.appendChild(av);h.appendChild(t);
+    const ed=document.createElement("button");ed.className="mini";ed.textContent="Ubah";ed.onclick=function(){openKid(k.id)};h.appendChild(ed);
+    c.appendChild(h);
+    c.appendChild(krow("Nama penuh",k.name,true,false));
+    c.appendChild(krow("No. MyKid",k.ic,open,true));
+    c.appendChild(krow("No. daftar kelahiran",k.reg,open,true));
+    if(k.pob)c.appendChild(krow("Tempat lahir",k.pob,true,false));
+    const rv=document.createElement("button");rv.className="mini";rv.textContent=open?"🙈 Sembunyi":"👁 Tunjuk nombor";
+    rv.onclick=function(){REV[k.id]=open?0:Date.now()+20000;renderKids();if(!open)setTimeout(function(){if(TAB==="kids")renderKids()},20100)};
+    c.appendChild(rv);el.appendChild(c);
+  });
+}
+function openKid(id){kEdit=id;const k=KIDS.filter(function(x){return x.id===id})[0]||{};
+  $("k5t").textContent=id?"Ubah maklumat anak":"Anak baru";$("kn").value=k.nick||"";$("kf").value=k.name||"";$("ki").value=k.ic||"";$("kr").value=k.reg||"";$("kd").value=k.dob||"";$("kp").value=k.pob||"";
+  $("kdel").style.display=id?"":"none";$("dlg5").showModal()}
+$("kcancel").onclick=function(){$("dlg5").close()};
+$("ksave").onclick=function(){const nick=$("kn").value.trim(),name=$("kf").value.trim().toUpperCase();if(!nick&&!name){$("kn").focus();return}
+  const o={nick:nick,name:name,ic:$("ki").value.trim(),reg:$("kr").value.trim().toUpperCase(),dob:$("kd").value,pob:$("kp").value.trim()};
+  if(kEdit)KIDS=KIDS.map(function(x){return x.id===kEdit?Object.assign({id:x.id},o):x});else KIDS.push(Object.assign({id:"k"+Date.now()},o));
+  saveKids();$("dlg5").close();renderKids()};
+$("kdel").onclick=function(){if(!two(this))return;KIDS=KIDS.filter(function(x){return x.id!==kEdit});saveKids();$("dlg5").close();renderKids()};
+$("imp").onclick=function(){$("imt").value="";$("ierr").textContent="";$("dlg7").showModal()};
+$("icx").onclick=function(){$("dlg7").close()};
+$("iok").onclick=function(){try{const j=JSON.parse($("imt").value.trim());
+  if(j.meta){META=Object.assign({since:"",married:"",dates:[]},META,j.meta);saveMeta()}
+  if(Array.isArray(j.kids)){KIDS=j.kids;saveKids()}
+  $("dlg7").close();renderHome()}catch(e){$("ierr").textContent="Teks tak sah. Pastikan seluruh blok ditampal."}};
+
 function setLabels(){$("l1").textContent="Saya";$("l2").textContent=ROLE==="wife"?"Suami":"Isteri"}
-function TT(t){return {home:"Kita 💞",bill:"Duit Saya",bill2:ROLE==="wife"?"Duit Suami":"Duit Isteri",chat:"Sembang",cyc:"Haid & Subur",plan:"Janji & Tarikh Penting"}[t]}
+function TT(t){return {home:"Kita 💞",bill:"Duit Saya",bill2:ROLE==="wife"?"Duit Suami":"Duit Isteri",chat:"Sembang",cyc:"Haid & Subur",plan:"Janji & Tarikh Penting",kids:"Anak-anak"}[t]}
 function show(t){TAB=t;const v=t==="bill2"?"bill":t;
   if(v==="bill"){K=t;S=SS[t];$("l1").className=t==="bill"?"on":"";$("l2").className=t==="bill2"?"on":""}
-  ["home","bill","chat","cyc","plan"].forEach(function(n){$("v-"+n).className="view"+(n===v?" on":"");$("n-"+n).className=n===v?"on":""});
-  $("ttl").textContent=TT(t);$("add").style.display=(v==="bill"||v==="plan")?"block":"none";
-  if(t==="home")renderHome();if(t==="chat")renderChat();if(v==="bill")render();if(t==="cyc")renderCyc();if(t==="plan")renderPlan()}
-["home","bill","chat","cyc","plan"].forEach(function(n){$("n-"+n).onclick=function(){show(n==="bill"?K:n)}});
+  ["home","bill","chat","cyc","plan","kids"].forEach(function(n){$("v-"+n).className="view"+(n===v?" on":"");$("n-"+n).className=n===v?"on":""});
+  $("ttl").textContent=TT(t);$("add").style.display=(v==="bill"||v==="plan"||v==="kids")?"block":"none";
+  if(t==="home")renderHome();if(t==="chat")renderChat();if(v==="bill")render();if(t==="cyc")renderCyc();if(t==="plan")renderPlan();if(t==="kids")renderKids()}
+["home","bill","chat","cyc","plan","kids"].forEach(function(n){$("n-"+n).onclick=function(){show(n==="bill"?K:n)}});
 $("l1").onclick=function(){show("bill")};$("l2").onclick=function(){show("bill2")};
 
 /* ---------- auth dan mula ---------- */
@@ -650,7 +811,8 @@ function boot(){
     else{C=fixC(ROLE==="wife"?seedC():null);if(ROLE==="wife"&&!cs){cs=true;saveC()}}
     renderCyc();
   },fail);
-  onSnapshot(doc(db,"meta","main"),function(s){META=s.exists()?s.data():{since:""};if(TAB==="home")renderHome()},fail);
+  onSnapshot(doc(db,"family","kids"),function(s){KIDS=s.exists()?(s.data().items||[]):[];if(TAB==="kids")renderKids();if(TAB==="home")renderHome()},fail);
+  onSnapshot(doc(db,"meta","main"),function(s){META=Object.assign({since:"",married:"",dates:[]},s.exists()?s.data():{});if(TAB==="home")renderHome()},fail);
   onSnapshot(doc(db,"plans","main"),function(s){PL=s.exists()?(s.data().items||[]):[];renderPlan();checkAlerts()},fail);
   setInterval(checkAlerts,30000);
   onSnapshot(query(collection(db,"chat"),orderBy("ts","desc"),limit(60)),function(q){
