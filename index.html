@@ -211,6 +211,59 @@ dialog::backdrop{background:rgba(90,30,60,.35)}
 .b.ot{background:linear-gradient(145deg,#fff,#f6e6ec);border-color:rgba(255,255,255,.9)}
 .cmp textarea{background:rgba(255,255,255,.85)}
 }
+
+:root{--a1:#ff6f9f;--a2:#b45cf0;--me:linear-gradient(135deg,var(--a1),var(--a2));--sys:-apple-system,BlinkMacSystemFont,"SF Pro Text","Helvetica Neue","Segoe UI",Roboto,sans-serif;--rnd:ui-rounded,"SF Pro Rounded",-apple-system,BlinkMacSystemFont,"Helvetica Neue",sans-serif}
+body{font-family:var(--sys);background:radial-gradient(120% 55% at 95% -5%,color-mix(in srgb,var(--a1) 30%,transparent),transparent 60%),radial-gradient(90% 50% at -10% 25%,color-mix(in srgb,var(--a2) 22%,transparent),transparent 60%),var(--bg);background-attachment:fixed}
+body::before{background:var(--a2);opacity:.3}
+body::after{background:var(--a1);opacity:.26}
+header{align-items:flex-end;padding:10px 20px 6px}
+#hdate{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.6px;color:var(--mute)}
+header h1{font-family:var(--rnd);font-style:normal;font-size:34px;font-weight:800;letter-spacing:-.6px;line-height:1.1}
+#gear{width:38px;height:38px;border-radius:50%;background:var(--glass);border:1px solid var(--line);display:grid;place-items:center;text-decoration:none;padding:0;color:var(--ink)}
+#gear svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round}
+.hero .hn,.kn,.av,.gate h1,.big{font-family:var(--rnd);font-style:normal;font-weight:800}
+.hero .hn{font-size:68px}
+.hero{background:var(--me);color:#fff}
+.hero .hh,.hero .hs{color:#fff}
+.big{background-image:linear-gradient(135deg,var(--gold),var(--rose))}
+.cyc .big{background-image:linear-gradient(135deg,var(--rose),var(--a2))}
+nav{margin:0;border-radius:0;border:0;border-top:.5px solid var(--line);box-shadow:none;padding:6px 4px 2px;background:var(--navbg);backdrop-filter:blur(24px) saturate(180%);-webkit-backdrop-filter:blur(24px) saturate(180%)}
+nav button{font-size:10px;gap:3px;padding:6px 0 4px;border-radius:0;color:var(--mute);font-weight:500}
+nav button svg{width:25px;height:25px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+nav button.on{background:none!important;box-shadow:none!important;color:var(--a1);font-weight:600}
+.dot{background:var(--a1)}
+.qa{display:flex;gap:12px;overflow-x:auto;padding:14px 2px 4px;scrollbar-width:none}
+.qa::-webkit-scrollbar{display:none}
+.qa button{flex:none;width:70px;background:none;border:0;display:flex;flex-direction:column;align-items:center;gap:6px;font-size:11px;color:var(--mute)}
+.qa .qi{width:58px;height:58px;border-radius:19px;display:grid;place-items:center;font-size:27px;background:var(--glass);border:1px solid var(--line);box-shadow:inset 0 1px 0 rgba(255,255,255,.25),0 8px 20px rgba(0,0,0,.18)}
+ul{background:var(--glass);border:1px solid var(--line);border-radius:20px;padding:0 14px;margin-top:14px}
+ul:empty{display:none}
+li:last-child{border-bottom:0}
+.pl{background:var(--glass);border:1px solid var(--line);border-left-width:4px;border-radius:18px;margin-bottom:8px;padding:12px 14px}
+.who.kid{background:#2fb98c}
+.pl.w-kid{border-left-color:#2fb98c}
+dialog{position:fixed;top:auto;bottom:0;left:0;right:0;margin:0 auto;width:100%;max-width:560px;max-height:92%;overflow:auto;border-radius:28px 28px 0 0;padding:8px 20px calc(24px + env(safe-area-inset-bottom,0px))}
+dialog[open]{animation:up .32s cubic-bezier(.2,.9,.3,1)}
+@keyframes up{from{transform:translateY(100%)}}
+dialog::before{content:"";display:block;width:38px;height:5px;border-radius:3px;background:var(--line);margin:4px auto 14px}
+dialog h2{font-size:20px;font-weight:700;text-align:center;margin:0 0 6px}
+dialog input,dialog select,dialog textarea{border:0;border-radius:12px;padding:12px 14px;background:var(--field)}
+.chk{justify-content:space-between;flex-direction:row-reverse;font-size:14px;color:var(--ink)}
+.sw{-webkit-appearance:none;appearance:none;width:51px!important;height:31px;border-radius:16px;background:var(--line);position:relative;flex:none;transition:background .2s;border:0!important;padding:0!important;margin:0}
+.sw::after{content:"";position:absolute;top:2px;left:2px;width:27px;height:27px;border-radius:50%;background:#fff;box-shadow:0 2px 5px rgba(0,0,0,.3);transition:transform .2s}
+.sw:checked{background:#34c759}
+.sw:checked::after{transform:translateX(20px)}
+.gl{font-size:12px;color:var(--mute);text-transform:uppercase;letter-spacing:.8px;margin:16px 4px 6px}
+.accs{display:flex;gap:14px;padding:4px}
+.acc{width:40px;height:40px;border-radius:50%;border:3px solid transparent;padding:0}
+.acc.on{box-shadow:0 0 0 2px var(--ink)}
+.toast{position:fixed;left:50%;bottom:calc(92px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:rgba(30,20,36,.94);color:#fff;padding:10px 18px;border-radius:20px;font-size:14px;z-index:60;white-space:nowrap}
+html.flat body{background:var(--bg)}
+html.flat body::before,html.flat body::after{display:none}
+html.flat .card,html.flat .tile,html.flat #emo,html.flat #pvb,html.flat .ban,html.flat .seg,html.flat ul,html.flat .pl,html.flat .qa .qi,html.flat #gear{background:var(--solid);border:1px solid var(--line);box-shadow:none;backdrop-filter:none;-webkit-backdrop-filter:none}
+html.flat .pl{border-left-width:4px}
+html.flat nav{background:var(--solid);backdrop-filter:none;-webkit-backdrop-filter:none}
+html.flat .hero{box-shadow:none}
 </style>
 </head>
 <body>
@@ -230,11 +283,12 @@ dialog::backdrop{background:rgba(90,30,60,.35)}
 </section>
 
 <div id="app" class="hide">
-<header><h1 id="ttl">Komitmen</h1><button id="out">Keluar</button></header>
+<header><div><div id="hdate"></div><h1 id="ttl">Komitmen</h1></div><button id="gear" aria-label="Tetapan"><svg viewBox="0 0 24 24"><path d="M4 7h10M18 7h2M4 17h2M10 17h10"/><circle cx="16" cy="7" r="2"/><circle cx="8" cy="17" r="2"/></svg></button></header>
 <div id="alrt" class="alrt hide"></div>
 <div id="stage">
  <section class="view on" id="v-home">
   <div class="hero" id="hero"><div class="hh" id="hello"></div><div class="hn" id="hdays">💞</div><div class="hs" id="hsince"></div></div>
+  <div class="qa" id="qa"></div>
   <div class="card" style="margin-top:12px"><div class="lbl">Tarikh penting</div><div id="dlist"></div><div class="acts2"><button id="dall">Lihat semua</button><button id="dadd">+ Tarikh</button></div></div>
   <div class="tiles" id="tiles"></div>
   <div class="foot"><button id="imp">Import data keluarga</button></div>
@@ -257,7 +311,7 @@ dialog::backdrop{background:rgba(90,30,60,.35)}
   <div id="emo"><div class="tabs"><button id="t1" class="on">Romantik</button><button id="t2">Nakal</button></div><div id="grid"></div></div>
   <div id="cerr"></div>
   <input type="file" id="pf" accept="image/*" class="hide"><input type="file" id="pc" accept="image/*" capture="environment" class="hide">
-  <div id="pvb"><img id="pvi" alt=""><label><input type="checkbox" id="pvo" checked> Lihat sekali</label><button class="mini pri" id="pvs">Hantar</button><button class="mini" id="pvx">Batal</button></div>
+  <div id="pvb"><img id="pvi" alt=""><label>Lihat sekali <input class="sw" type="checkbox" id="pvo" checked></label><button class="mini pri" id="pvs">Hantar</button><button class="mini" id="pvx">Batal</button></div>
   <div id="picm"><button id="pcam">📸 Kamera</button><button id="pgal">🖼️ Galeri</button></div>
   <div class="cmp"><button class="rnd" id="picb" aria-label="Gambar">📷</button><button class="rnd" id="emob" aria-label="Emoji">😘</button><textarea id="ci" rows="1" placeholder="Tulis mesej..."></textarea><button class="rnd snd" id="send" aria-label="Hantar">➤</button></div>
  </section>
@@ -278,7 +332,7 @@ dialog::backdrop{background:rgba(90,30,60,.35)}
   </div>
  </section>
  <section class="view" id="v-plan">
-  <div class="flt" id="flt"><button data-f="all" class="on">Semua</button><button data-f="wife">Isteri</button><button data-f="husb">Suami</button></div>
+  <div class="flt" id="flt"><button data-f="all" class="on">Semua</button><button data-f="wife">Isteri</button><button data-f="husb">Suami</button><button data-f="kid">Anak</button></div>
   <div class="acts2"><button id="notif" class="hide">Hidupkan notifikasi</button></div>
   <div id="plist"></div>
   <div class="note">Bunyi amaran dalam app hanya berbunyi bila app dibuka. Untuk amaran 2 jam sebelum janji walaupun app ditutup, tekan Kalendar pada setiap janji dan simpan ke kalendar telefon.</div>
@@ -290,15 +344,35 @@ dialog::backdrop{background:rgba(90,30,60,.35)}
  <button class="fab" id="add">+ Tambah</button>
 </div>
 <nav>
- <button id="n-home" class="on"><i>🏠</i>Kita</button>
- <button id="n-bill"><i>💰</i>Duit</button>
- <button id="n-chat"><i>💬</i>Chat<span class="dot" id="dot"></span></button>
- <button id="n-cyc"><i>🌸</i>Haid</button>
- <button id="n-plan"><i>📅</i>Janji</button>
- <button id="n-kids"><i>👶</i>Anak</button>
+ <button id="n-home" class="on"><svg viewBox="0 0 24 24"><path d="M3 11l9-8 9 8v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>Kita</button>
+ <button id="n-bill"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="14" rx="3"/><path d="M3 10h18"/><circle cx="16.5" cy="15" r="1"/></svg>Duit</button>
+ <button id="n-chat"><svg viewBox="0 0 24 24"><path d="M5 4h14a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-8l-5 4v-4H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/></svg>Chat<span class="dot" id="dot"></span></button>
+ <button id="n-cyc"><svg viewBox="0 0 24 24"><path d="M12 3c4 5 6.5 8 6.5 11.2a6.5 6.5 0 0 1-13 0C5.5 11 8 8 12 3z"/></svg>Haid</button>
+ <button id="n-plan"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Janji</button>
+ <button id="n-kids"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8.5 14.2c1 1.4 2.2 2 3.5 2s2.5-.6 3.5-2"/><path d="M9 10h.01M15 10h.01"/></svg>Anak</button>
 </nav>
 </div>
 
+<div class="toast hide" id="toast"></div>
+<dialog id="dlg8">
+ <h2>Tetapan</h2>
+ <div class="gl">Tema</div>
+ <div class="seg" id="sTheme"><button data-v="auto">Auto</button><button data-v="dark">Gelap</button><button data-v="light">Cerah</button></div>
+ <div class="gl">Warna</div>
+ <div class="accs" id="sAcc">
+  <button class="acc" data-a="rose" aria-label="Merah jambu" style="background:linear-gradient(135deg,#ff6f9f,#b45cf0)"></button>
+  <button class="acc" data-a="ungu" aria-label="Ungu" style="background:linear-gradient(135deg,#8e7bff,#c05cf0)"></button>
+  <button class="acc" data-a="laut" aria-label="Biru" style="background:linear-gradient(135deg,#4aa8ff,#6a7bff)"></button>
+  <button class="acc" data-a="hijau" aria-label="Hijau" style="background:linear-gradient(135deg,#34d399,#3b9be0)"></button>
+  <button class="acc" data-a="emas" aria-label="Emas" style="background:linear-gradient(135deg,#f4a259,#ff6f9f)"></button>
+ </div>
+ <div class="gl">Gaya kad</div>
+ <div class="seg" id="sStyle"><button data-v="glass">Kaca</button><button data-v="flat">Rata</button></div>
+ <div class="gl">Amaran</div>
+ <label class="chk">Bunyi amaran dalam app <input class="sw" type="checkbox" id="sSnd"></label>
+ <div class="note">Pilihan ini disimpan pada telefon ini sahaja.</div>
+ <div class="acts"><button class="del" id="out">Log keluar</button><button class="pri" id="sdone">Siap</button></div>
+</dialog>
 <dialog id="dlg5">
  <h2 id="k5t">Anak baru</h2>
  <label for="kn">Nama panggilan</label><input id="kn" autocomplete="off">
@@ -332,8 +406,8 @@ dialog::backdrop{background:rgba(90,30,60,.35)}
 <dialog id="dlg3">
  <h2 id="d3t">Janji baru</h2>
  <label for="pt">Tajuk</label><input id="pt" placeholder="cth: Appointment klinik" autocomplete="off">
- <label for="pk">Jenis</label><select id="pk"><option value="janji">Appointment</option><option value="penting">Tarikh penting</option></select>
- <label for="pw">Untuk siapa</label><select id="pw"><option value="wife">Isteri</option><option value="husb">Suami</option><option value="both">Kami berdua</option></select>
+ <label for="pk">Jenis</label><select id="pk"><option value="janji">Klinik / hospital 🩺</option><option value="vaksin">Vaksin 💉</option><option value="sekolah">Sekolah 🏫</option><option value="penting">Tarikh penting ⭐</option><option value="lain">Lain-lain 📌</option></select>
+ <label for="pwho">Untuk siapa</label><select id="pwho"><option value="wife">Isteri</option><option value="husb">Suami</option><option value="both">Kami berdua</option></select>
  <label for="pd">Tarikh</label><input id="pd" type="date">
  <label for="ptm">Masa (pilihan, untuk amaran 2 jam sebelum)</label><input id="ptm" type="time">
  <label for="pn">Nota (pilihan)</label><input id="pn" placeholder="cth: bawa kad IC" autocomplete="off">
@@ -350,7 +424,7 @@ dialog::backdrop{background:rgba(90,30,60,.35)}
  <label for="fn">Nama</label><input id="fn" placeholder="cth: Netflix" autocomplete="off">
  <label for="fa">Jumlah (RM)</label><input id="fa" type="number" inputmode="decimal" step="0.01" placeholder="0.00">
  <label for="fd">Tarikh bayar setiap bulan (pilihan)</label><input id="fd" type="number" inputmode="numeric" min="1" max="31" placeholder="cth: 10">
- <label class="chk"><input id="fv" type="checkbox"> Jumlah berubah tiap bulan (kemas kini untuk bulan ini sahaja)</label>
+ <label class="chk"><input class="sw" id="fv" type="checkbox"> Jumlah berubah tiap bulan (kemas kini untuk bulan ini sahaja)</label>
  <div class="acts"><button class="del" id="fdel">Padam</button><button id="fcancel">Batal</button><button class="pri" id="fsave">Simpan</button></div>
 </dialog>
 
@@ -545,38 +619,38 @@ function pcount(it){
   return dl===0?"Hari ini":dl===1?"Esok":dl>1?dl+" hari lagi":"Sudah lepas";
 }
 function prow(it,old){
-  const d=document.createElement("div");d.className="pl"+(old?" past":"")+" w-"+(it.who||"both");
-  const ic=document.createElement("div");ic.className="ico";ic.textContent=it.type==="penting"?"⭐":"🩺";
+  const d=document.createElement("div");d.className="pl"+(old?" past":"")+" w-"+wk(it.who);
+  const ic=document.createElement("div");ic.className="ico";ic.textContent=({janji:"🩺",vaksin:"💉",sekolah:"🏫",penting:"⭐",lain:"📌"})[it.type]||"🩺";
   const nm=document.createElement("div");nm.className="nm";
   const a=document.createElement("div");a.textContent=it.title;nm.appendChild(a);
   const b=document.createElement("div");b.className="dd";b.textContent=pfmt(it)+(it.note?", "+it.note:"");nm.appendChild(b);
-  const w=it.who||"both",wb=document.createElement("span");wb.className="who "+w;wb.textContent=(w==="both"?"Berdua":w==="wife"?"Isteri":"Suami")+(w===ROLE?" (saya)":"");nm.appendChild(wb);
+  const w=it.who||"both",wb=document.createElement("span");wb.className="who "+wk(w);wb.textContent=wlabel(w)+(w===ROLE?" (saya)":"");nm.appendChild(wb);
   if(!old){const c=document.createElement("div");c.className="cd2";c.textContent=pcount(it);nm.appendChild(c)}
   nm.onclick=function(){openPlan(it.id)};
   d.appendChild(ic);d.appendChild(nm);
   if(!old){const bl=document.createElement("button");bl.className="bell";bl.textContent="🔔 Kalendar";bl.setAttribute("aria-label","Simpan ke kalendar: "+it.title);bl.onclick=function(){icsDown(it)};d.appendChild(bl)}
   return d;
 }
-function renderPlan(){if(TAB==="home")renderHome();
+function renderPlan(){if(TAB==="home")renderHome();if(TAB==="kids")renderKids();
   const el=$("plist");el.innerHTML="";
-  const all=PL.filter(function(i){const w=i.who||"both";return PF==="all"||w===PF||w==="both"}).sort(function(a,b){return ptime(a)-ptime(b)});
+  const all=PL.filter(function(i){const w=i.who||"both";return PF==="all"||(PF==="kid"?w.indexOf("k:")===0:(w===PF||w==="both"))}).sort(function(a,b){return ptime(a)-ptime(b)});
   const up=all.filter(function(i){return !isPast(i)}),old=all.filter(isPast).reverse().slice(0,5);
   if(!up.length)el.innerHTML='<div class="empty">Belum ada janji atau tarikh penting. Tekan + Tambah.</div>';
   up.forEach(function(it){el.appendChild(prow(it,false))});
   if(old.length){const h=document.createElement("div");h.className="sec";h.textContent="Sudah lepas";el.appendChild(h);old.forEach(function(it){el.appendChild(prow(it,true))})}
   $("notif").classList.toggle("hide",!("Notification" in window)||Notification.permission!=="default");
 }
-function openPlan(id){
+function openPlan(id,preWho){fillWho();
   pEdit=id;const it=PL.filter(function(x){return x.id===id})[0];
   $("d3t").textContent=it?"Ubah janji":"Janji baru";$("pt").value=it?it.title:"";$("pk").value=it?it.type:"janji";
-  $("pd").value=it?it.date:ds(new Date());$("pw").value=it?(it.who||"both"):ROLE;$("ptm").value=it?it.time:"";$("pn").value=it?it.note:"";
+  $("pd").value=it?it.date:ds(new Date());$("pwho").value=it?(it.who||"both"):(preWho||ROLE);$("ptm").value=it?it.time:"";$("pn").value=it?it.note:"";
   $("pdel").style.display=it?"":"none";$("dlg3").showModal();
 }
 $("pcancel").onclick=function(){$("dlg3").close()};
 document.querySelectorAll("#flt button").forEach(function(b){b.onclick=function(){PF=b.dataset.f;document.querySelectorAll("#flt button").forEach(function(x){x.className=x===b?"on":""});renderPlan()}});
 $("psave").onclick=function(){
   const t=$("pt").value.trim(),d=$("pd").value;if(!t||!d){$("pt").focus();return}
-  const o={title:t,who:$("pw").value,type:$("pk").value,date:d,time:$("ptm").value||"",note:$("pn").value.trim()};
+  const o={title:t,who:$("pwho").value,type:$("pk").value,date:d,time:$("ptm").value||"",note:$("pn").value.trim()};
   if(pEdit)PL=PL.map(function(x){return x.id===pEdit?Object.assign({id:x.id},o):x});
   else PL.push(Object.assign({id:"p"+Date.now()},o));
   savePL();$("dlg3").close();renderPlan();checkAlerts();
@@ -596,14 +670,14 @@ function icsDown(it){
 }
 function unlockAudio(){try{if(!AC)AC=new (window.AudioContext||window.webkitAudioContext)();if(AC.state==="suspended")AC.resume()}catch(e){}}
 document.addEventListener("pointerdown",unlockAudio);
-function beep(){
+function beep(){if(!SET.snd)return;
   try{if(AC){for(let i=0;i<4;i++){const o=AC.createOscillator(),g=AC.createGain();o.frequency.value=i%2?660:880;o.connect(g);g.connect(AC.destination);
     const t=AC.currentTime+i*0.45;g.gain.setValueAtTime(0.0001,t);g.gain.exponentialRampToValueAtTime(0.4,t+0.03);g.gain.exponentialRampToValueAtTime(0.0001,t+0.4);o.start(t);o.stop(t+0.42)}}}catch(e){}
   try{if(navigator.vibrate)navigator.vibrate([300,150,300])}catch(e){}
 }
 function checkAlerts(){
   const al=lsGet("kk-al")||{},n=new Date();let hit=null;
-  PL.forEach(function(it){if(!it.time||(it.who&&it.who!=="both"&&it.who!==ROLE))return;const t=ptime(it),key=it.id+it.date+it.time;if(n>=t-72e5&&n<t&&!al[key]){al[key]=1;hit=hit||it}});
+  PL.forEach(function(it){if(!it.time||(it.who&&it.who!=="both"&&it.who.indexOf("k:")!==0&&it.who!==ROLE))return;const t=ptime(it),key=it.id+it.date+it.time;if(n>=t-72e5&&n<t&&!al[key]){al[key]=1;hit=hit||it}});
   if(hit){lsSet("kk-al",al);
     const mins=Math.max(1,Math.round((ptime(hit)-n)/6e4)),h=Math.floor(mins/60),m=mins%60;
     const msg="⏰ "+hit.title+" pada "+hit.time+", lagi "+(h?h+" jam ":"")+(m?m+" min":"");
@@ -671,7 +745,7 @@ function renderHome(){
   g.appendChild(tile("💬","Chat",lm?(lm.t||"📷 Gambar").slice(0,50):"Mulakan sembang","chat",true));
   let hs="Belum ada data";if(C&&C.starts.length){hs={haid:"Sedang haid",subur:"Tempoh subur",jaga:"Hampir subur",rendah:"Risiko lebih rendah","?":"Belum ada data"}[dayInfo(today).t]}
   g.appendChild(tile("🌸","Haid",hs,"cyc"));
-  const up=PL.filter(function(i){return !isPast(i)&&(!i.who||i.who==="both"||i.who===ROLE)}).sort(function(a,b){return ptime(a)-ptime(b)})[0];
+  const up=PL.filter(function(i){return !isPast(i)&&(!i.who||i.who==="both"||i.who===ROLE||i.who.indexOf("k:")===0)}).sort(function(a,b){return ptime(a)-ptime(b)})[0];
   g.appendChild(tile("📅","Janji",up?up.title+", "+pcount(up):"Tiada janji","plan"));
   const r1=remain(SS.bill),r2=remain(SS.bill2);
   g.appendChild(tile("💰","Duit saya",r1===null?"...":"Baki "+rm(r1),"bill"));
@@ -745,6 +819,9 @@ function renderKids(){
     c.appendChild(krow("No. MyKid",k.ic,open,true));
     c.appendChild(krow("No. daftar kelahiran",k.reg,open,true));
     if(k.pob)c.appendChild(krow("Tempat lahir",k.pob,true,false));
+    const nx=PL.filter(function(i){return i.who==="k:"+k.id&&!isPast(i)}).sort(function(a,b){return ptime(a)-ptime(b)})[0];
+    c.appendChild(krow("Temujanji seterusnya",nx?nx.title+", "+pfmt(nx):"Tiada",true,false));
+    const ap=document.createElement("button");ap.className="mini";ap.textContent="📅 Tambah temujanji";ap.onclick=function(){show("plan");openPlan(null,"k:"+k.id)};c.appendChild(ap);
     const rv=document.createElement("button");rv.className="mini";rv.textContent=open?"🙈 Sembunyi":"👁 Tunjuk nombor";
     rv.onclick=function(){REV[k.id]=open?0:Date.now()+20000;renderKids();if(!open)setTimeout(function(){if(TAB==="kids")renderKids()},20100)};
     c.appendChild(rv);el.appendChild(c);
@@ -766,12 +843,53 @@ $("iok").onclick=function(){try{const j=JSON.parse($("imt").value.trim());
   if(Array.isArray(j.kids)){KIDS=j.kids;saveKids()}
   $("dlg7").close();renderHome()}catch(e){$("ierr").textContent="Teks tak sah. Pastikan seluruh blok ditampal."}};
 
+/* ---------- tetapan, pantas, anak dalam janji ---------- */
+const DAYF=["Ahad","Isnin","Selasa","Rabu","Khamis","Jumaat","Sabtu"];
+function hdate(){const n=new Date();$("hdate").textContent=DAYF[n.getDay()]+", "+n.getDate()+" "+MN[n.getMonth()]}
+function wk(w){return w&&w.indexOf("k:")===0?"kid":(w||"both")}
+function wlabel(w){if(!w||w==="both")return "Berdua";if(w==="wife")return "Isteri";if(w==="husb")return "Suami";const k=KIDS.filter(function(x){return "k:"+x.id===w})[0];return k?(k.nick||k.name):"Anak"}
+function fillWho(){const sl=$("pwho"),v=sl.value;sl.innerHTML="";
+  [["wife","Isteri"],["husb","Suami"],["both","Kami berdua"]].concat(KIDS.map(function(k){return ["k:"+k.id,"Anak: "+(k.nick||k.name)]})).forEach(function(o){const e=document.createElement("option");e.value=o[0];e.textContent=o[1];sl.appendChild(e)});
+  if(v)sl.value=v}
+let TO=null;
+function toast(m){const t=$("toast");t.textContent=m;t.classList.remove("hide");clearTimeout(TO);TO=setTimeout(function(){t.classList.add("hide")},1900)}
+const ACC={rose:["#ff6f9f","#b45cf0"],ungu:["#8e7bff","#c05cf0"],laut:["#4aa8ff","#6a7bff"],hijau:["#34d399","#3b9be0"],emas:["#f4a259","#ff6f9f"]};
+let SET=Object.assign({theme:"auto",acc:"rose",flat:false,snd:true},lsGet("kk-set")||{});
+const LR=[];
+try{Array.prototype.forEach.call(document.styleSheets[0].cssRules,function(r){if(r.media&&/prefers-color-scheme/.test(r.media.mediaText)&&/light/.test(r.media.mediaText))LR.push([r,r.media.mediaText])})}catch(e){}
+function applySet(){
+  LR.forEach(function(x){try{x[0].media.mediaText=SET.theme==="light"?"all":SET.theme==="dark"?"not all":x[1]}catch(e){}});
+  const a=ACC[SET.acc]||ACC.rose,st=document.documentElement.style;
+  if(SET.acc==="rose"){st.removeProperty("--a1");st.removeProperty("--a2");st.removeProperty("--rose")}
+  else{st.setProperty("--a1",a[0]);st.setProperty("--a2",a[1]);st.setProperty("--rose",a[0])}
+  document.documentElement.classList.toggle("flat",!!SET.flat);
+  document.querySelectorAll("#sTheme button").forEach(function(b){b.className=b.dataset.v===SET.theme?"on":""});
+  document.querySelectorAll("#sStyle button").forEach(function(b){b.className=b.dataset.v===(SET.flat?"flat":"glass")?"on":""});
+  document.querySelectorAll("#sAcc button").forEach(function(b){b.className="acc"+(b.dataset.a===SET.acc?" on":"")});
+  $("sSnd").checked=!!SET.snd;
+}
+function setSet(k,v){SET[k]=v;lsSet("kk-set",SET);applySet()}
+document.querySelectorAll("#sTheme button").forEach(function(b){b.onclick=function(){setSet("theme",b.dataset.v)}});
+document.querySelectorAll("#sStyle button").forEach(function(b){b.onclick=function(){setSet("flat",b.dataset.v==="flat")}});
+document.querySelectorAll("#sAcc button").forEach(function(b){b.onclick=function(){setSet("acc",b.dataset.a)}});
+$("sSnd").onchange=function(){setSet("snd",this.checked)};
+$("gear").onclick=function(){$("dlg8").showModal()};
+$("sdone").onclick=function(){$("dlg8").close()};
+applySet();
+let ARM=0;
+[["💌","Hantar rindu",function(){const L=["Rindu awak 😘","Sayang awak ❤️","Love you 🥰","Tak sabar jumpa awak 😏"];send(L[Math.floor(Math.random()*L.length)]);toast("Dihantar 💌")}],
+ ["📅","Janji",function(){show("plan");openPlan(null)}],
+ ["💸","Komitmen",function(){show("bill");openDlg(null)}],
+ ["👶","Janji anak",function(){show("plan");openPlan(null,KIDS.length?"k:"+KIDS[0].id:ROLE)}],
+ ["🌸","Haid mula",function(){if(!C)return;if(Date.now()-ARM<3000){ARM=0;const v=ds(new Date());if(C.starts.indexOf(v)<0){C.starts.push(v);C.starts.sort();saveC();toast("Haid mula dicatat 🌸")}else toast("Sudah dicatat hari ini")}else{ARM=Date.now();toast("Tekan sekali lagi untuk sahkan")}}]
+].forEach(function(q){const b=document.createElement("button"),i=document.createElement("div");i.className="qi";i.textContent=q[0];b.appendChild(i);b.appendChild(document.createTextNode(q[1]));b.onclick=q[2];$("qa").appendChild(b)});
+
 function setLabels(){$("l1").textContent="Saya";$("l2").textContent=ROLE==="wife"?"Suami":"Isteri"}
 function TT(t){return {home:"Kita 💞",bill:"Duit Saya",bill2:ROLE==="wife"?"Duit Suami":"Duit Isteri",chat:"Sembang",cyc:"Haid & Subur",plan:"Janji & Tarikh Penting",kids:"Anak-anak"}[t]}
 function show(t){TAB=t;const v=t==="bill2"?"bill":t;
   if(v==="bill"){K=t;S=SS[t];$("l1").className=t==="bill"?"on":"";$("l2").className=t==="bill2"?"on":""}
   ["home","bill","chat","cyc","plan","kids"].forEach(function(n){$("v-"+n).className="view"+(n===v?" on":"");$("n-"+n).className=n===v?"on":""});
-  $("ttl").textContent=TT(t);$("add").style.display=(v==="bill"||v==="plan"||v==="kids")?"block":"none";
+  $("ttl").textContent=TT(t);hdate();$("add").style.display=(v==="bill"||v==="plan"||v==="kids")?"block":"none";
   if(t==="home")renderHome();if(t==="chat")renderChat();if(v==="bill")render();if(t==="cyc")renderCyc();if(t==="plan")renderPlan();if(t==="kids")renderKids()}
 ["home","bill","chat","cyc","plan","kids"].forEach(function(n){$("n-"+n).onclick=function(){show(n==="bill"?K:n)}});
 $("l1").onclick=function(){show("bill")};$("l2").onclick=function(){show("bill2")};
